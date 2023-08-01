@@ -1,0 +1,55 @@
+<!--
+  This example requires some changes to your config:
+  
+  ```
+  // tailwind.config.js
+  module.exports = {
+    // ...
+    plugins: [
+      // ...
+      require('@tailwindcss/fs'),
+    ],
+  }
+  ```
+-->
+<!--
+  This example requires updating your template:
+
+  ```
+  <html class="h-full bg-white">
+  <body class="h-full">
+  ```
+-->
+<div class="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
+  <div class="sm:mx-auto sm:w-full sm:max-w-sm">
+    <h2 class="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Create an account</h2>
+  </div>
+  <div>
+    <%= render 'shared/error_messages' %>
+  </div>
+  <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+    <div class="space-y-6">
+      <%= form_for(@user) do |f| %>
+        <div>
+          <%= f.label :username, class: label_class %>
+          <div class="mt-2">
+            <%= f.text_field :username, class: input_class %>
+          </div>
+        </div>
+        <div>
+          <%= f.label :email, class: label_class %>
+          <div class="mt-2">
+            <%= f.email_field :email, class: input_class %>
+          </div>
+        </div>
+        <div class="mt-2">
+          <%= f.submit 'Register', class: form_button_class %>
+        </div>
+      <% end %>
+    </div>
+    <p class="mt-10 text-center text-sm text-gray-500">
+      Already a member?
+      <%= link_to 'Login Here', login_path, class:"font-semibold leading-6 text-indigo-600 hover:text-indigo-500" %>
+    </p>
+  </div>
+</div>
